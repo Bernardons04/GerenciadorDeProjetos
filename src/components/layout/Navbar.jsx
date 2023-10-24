@@ -12,7 +12,7 @@ function Navbar() {
                 </Link>
                 <ul className='list'>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/home">Home</Link>
                     </li>
                     <li>
                         <Link to="/projects">Projetos</Link>
@@ -20,8 +20,8 @@ function Navbar() {
                     <li>
                         <Link to="/contact">Contato</Link>
                     </li>
-                    <li>
-                        <Link to="/company">Empresa</Link>
+                    <li className="button">
+                        <Link to="/">Login</Link>
                     </li>
                 </ul>
             </Container>

@@ -20,3 +20,18 @@
 .list a:hover {
     color: #ffbb33;
 }
+
+.button a {
+    border: solid 2px #ffbb33;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 8px;
+    color: #222;
+    background-color: #ffbb33;
+    border-radius: 10px;
+}
+
+.button a:hover {
+    color: #ffffff;
+    background-color: #222;
+}
