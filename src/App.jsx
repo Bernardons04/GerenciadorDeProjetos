@@ -33,7 +33,6 @@ function App() {
             element={<Projects />}
           />
 
-
           <Route
             path="/contact"
             element={<Contact />}
@@ -49,7 +48,6 @@ function App() {
             element={<Project />}
           />
         </Routes>
-
       </Container>
 
       <Footer />

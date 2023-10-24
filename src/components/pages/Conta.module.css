@@ -1,0 +1,21 @@
+.divContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 3rem auto 2rem;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+.divLogin {
+    width: 50%;
+}
+
+.divContainer a {
+    text-decoration: none;
+    color: #5549fd;
+}
+
+.divContainer a:hover {
+    text-decoration: underline;
+}

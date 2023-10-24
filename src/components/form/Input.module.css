@@ -12,7 +12,7 @@ label {
 input {
     padding: .7rem;
     border-radius: 0;
-    border: none;
+    border: solid 1px;
 }
 
 input::placeholder {
