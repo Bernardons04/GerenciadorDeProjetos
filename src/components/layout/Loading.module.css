@@ -9,3 +9,8 @@
 .loader {
     width: 50px;
 }
+
+.ajustarLoader {
+    position: absolute;
+    left: 50%;
+}

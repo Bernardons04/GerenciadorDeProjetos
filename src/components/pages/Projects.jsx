@@ -86,7 +86,7 @@ function Projects() {
                             />
                         ))
                     }
-                    {!removeLoading && <Loading />}
+                    {!removeLoading && <Loading customClass="ajustarLoader"/>}
                     {removeLoading && projects.length === 0 && (
                         <p>Não há projetos cadastrados</p>
                     )}

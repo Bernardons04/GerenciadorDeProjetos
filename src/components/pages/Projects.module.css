@@ -1,6 +1,7 @@
 .projectContainer {
     padding: 2rem;
     max-width: 100%;
+    justify-content: center;
 }
 
 .titleContainer {
@@ -11,4 +12,22 @@
 
 .divCard {
     column-count: 4;
+    position: relative;
+}
+
+@media screen and (max-width: 1150px) {
+    .divCard {
+        column-count: 3;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .divCard {
+        column-count: 2;
+    }
+}
+@media screen and (max-width: 570px) {
+    .divCard {
+        column-count: 1;
+    }
 }
