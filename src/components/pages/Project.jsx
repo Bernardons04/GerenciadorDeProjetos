@@ -162,8 +162,11 @@ function Project() {
                                 <p>
                                     <span>Total de Orçamento: </span> R${project.budget}
                                 </p>
-                                <p>
+                                <p className={styles.utilizado}>
                                     <span>Total Utilizado: </span> R${project.cost}
+                                </p>
+                                <p className={styles.disponivel}>
+                                    <span>Total Disponível: </span> R${project.budget - project.cost}
                                 </p>
                             </div>
                         ) : (

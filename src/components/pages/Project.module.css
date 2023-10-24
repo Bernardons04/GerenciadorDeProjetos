@@ -50,3 +50,13 @@ button:hover {
 .projectInfo {
     width: 100%;
 }
+
+.disponivel {
+    color: #10a53d;
+    font-weight: bold;
+}
+
+.utilizado {
+    font-weight: bold;
+    color: #ce203d;
+}

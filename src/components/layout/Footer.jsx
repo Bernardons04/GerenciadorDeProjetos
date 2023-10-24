@@ -17,7 +17,7 @@ function Footer() {
                 </li>
             </ul>
             <p>
-                <span>Costs</span> &copy; 2023
+                <span>Tech Costs</span> &copy; 2023
             </p>
         </footer>
     )
