@@ -11,8 +11,12 @@
     min-height: 75%;
 }
 
-.start {
+.center {
     justify-content: center;
+}
+
+.start {
+    justify-content: flex-start;
 }
 
 .column {

@@ -71,7 +71,7 @@ function Projects() {
             </div>
             {message && <Message type={type} msg={message} />}
             {projectMessage && <Message type={type} msg={projectMessage} />}
-            <Container customClass="start">
+            <Container customClass="center">
                 <div className={styles.divCard}>
                     {projects.length > 0 &&
                         projects.map((project) => (
