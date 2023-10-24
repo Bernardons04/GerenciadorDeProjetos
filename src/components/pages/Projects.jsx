@@ -32,7 +32,7 @@ function Projects() {
                     'Content-Type': 'application/json',
                     'Access-Control-Request-Headers': '*',
                     'Api-key': 'tOfsFWquDtICjEeh5uvESTmYHt1phsRIoXiPiHjWfxh86RfKE9n20wabsZndDod2',
-                    'Access-Control-Allow-Origin' : '*',
+                    'Access-Control-Allow-Origin': '*',
                 },
             })
                 .then(resp => resp.json())
@@ -72,22 +72,25 @@ function Projects() {
             {message && <Message type={type} msg={message} />}
             {projectMessage && <Message type={type} msg={projectMessage} />}
             <Container customClass="start">
-                {projects.length > 0 &&
-                    projects.map((project) => (
-                        <ProjectCard
-                            id={project._id}
-                            name={project.name}
-                            budget={project.budget}
-                            category={project.category}
-                            key={project._id}
-                            handleRemove={removeProject}
-                        />
-                    ))
-                }
-                {!removeLoading && <Loading />}
-                {removeLoading && projects.length === 0 && (
-                    <p>Não há projetos cadastrados</p>
-                )}
+                <div className={styles.divCard}>
+                    {projects.length > 0 &&
+                        projects.map((project) => (
+                            <ProjectCard
+                                id={project._id}
+                                name={project.name}
+                                descriptionProject={project.descriptionProject}
+                                budget={project.budget}
+                                category={project.category}
+                                key={project._id}
+                                handleRemove={removeProject}
+                            />
+                        ))
+                    }
+                    {!removeLoading && <Loading />}
+                    {removeLoading && projects.length === 0 && (
+                        <p>Não há projetos cadastrados</p>
+                    )}
+                </div>
             </Container>
         </div>
     )

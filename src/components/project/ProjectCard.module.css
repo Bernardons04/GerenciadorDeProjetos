@@ -1,22 +1,28 @@
 .projectCard {
     padding: 1rem;
-    border: 1px solid #7a7a7a;
+    border: 1px solid #353535;
     border-radius: 5px;
     width: 270px;
     margin: 0.5%;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
 }
 
 .projectCard h4 {
     background-color: #222;
     color: #ffbb33;
     padding: .4rem;
-    margin-bottom: 1.3rem;
+    margin-bottom: .5rem;
     font-size: 1.3rem;
+    word-break: break-all;
 }
 
 .projectCard p {
-    color: #7a7a7a;
-    margin-bottom: 1rem;
+    color: #353535;
+    margin-bottom: .5rem;
+    max-width: 100%;
+    word-break: break-all;
 }
 
 .projectCard p span {
@@ -64,7 +70,7 @@
     text-decoration: none;
     border: none;
     background-color: #fff;
-    color: #222;
+    color: #000000;
     font-size: .9rem;
     padding: .6rem 1rem;
     margin-right: 1rem;

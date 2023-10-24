@@ -157,16 +157,19 @@ function Project() {
                         {!showProjectForm ? (
                             <div className={styles.projectInfo}>
                                 <p>
+                                    <span>Descrição: </span> {project.descriptionProject ? project.descriptionProject : "Projeto Sem Descrição"}
+                                </p>
+                                <p>
                                     <span>Categoria: </span> {project.category}
                                 </p>
                                 <p>
                                     <span>Total de Orçamento: </span> R${project.budget}
                                 </p>
                                 <p className={styles.utilizado}>
-                                    <span>Total Utilizado: </span> R${project.cost}
+                                    <span>Orçamento Utilizado: </span> R${project.cost}
                                 </p>
                                 <p className={styles.disponivel}>
-                                    <span>Total Disponível: </span> R${project.budget - project.cost}
+                                    <span>Orçamento Disponível: </span> R${project.budget - project.cost}
                                 </p>
                             </div>
                         ) : (

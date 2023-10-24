@@ -55,6 +55,15 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
             />
 
             <Input
+                type="text"
+                text="Descrição do projeto"
+                name="descriptionProject"
+                placeholder="Insira a descrição do projeto"
+                handleOnChange={handleChange}
+                value={project.descriptionProject ? project.descriptionProject : ''}
+            />
+
+            <Input
                 type="number"
                 text="Orçamento do projeto"
                 name="budget"
