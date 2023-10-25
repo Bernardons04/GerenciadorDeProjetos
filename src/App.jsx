@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Home from './components/pages/Home'
 import Contact from './components/pages/Contact'
-import Conta from './components/pages/Conta'
+import Conta from './components/Usuarios/Conta'
+import NewConta from './components/Usuarios/NewConta'
 import NewProject from './components/pages/NewProject'
 import Projects from './components/pages/Projects'
 import Project from './components/pages/Project'
@@ -44,12 +45,16 @@ function App() {
           />
 
           <Route
+            path="/newconta"
+            element={<NewConta />}
+          />
+
+          <Route
             path="/project/:id"
             element={<Project />}
           />
         </Routes>
       </Container>
-
       <Footer />
     </Router>
   )
