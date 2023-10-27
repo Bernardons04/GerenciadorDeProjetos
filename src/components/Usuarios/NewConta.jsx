@@ -1,9 +1,10 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Input from "../form/Input"
 import SubmitButton from '../form/SubmitButton'
 import styles from './Conta.module.css'
 import AppContext from '../../context/AppContext'
+import Message from '../layout/Message'
 
 function NewConta({ contaData }) {
     
@@ -11,7 +12,36 @@ function NewConta({ contaData }) {
     const { setId } = useContext(AppContext);
     const [conta, setConta] = useState(contaData || {})
     const url = "https://gerenciadorapi.onrender.com"
+    const [contas, setContas] = useState([])
+    
+    useEffect(() => {
+        fetch(`${url}/user`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Request-Headers': '*',
+                'Api-key': 'tOfsFWquDtICjEeh5uvESTmYHt1phsRIoXiPiHjWfxh86RfKE9n20wabsZndDod2',
+            }
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                setContas(data)
+            })
+            .catch(err => console.log(err))
+    }, [])
 
+    function verificarExistenciaConta() {
+        let existe;
+        for (const element of contas) {
+            if (element.email === conta.email) {
+                existe = true;
+                break;
+            } else {
+                existe = false
+            }
+        }
+        return existe
+    }
     const createConta = (conta) => {
         fetch(`${url}/user`, {
             method: 'POST',
@@ -34,7 +64,11 @@ function NewConta({ contaData }) {
 
     const submit = e => {
         e.preventDefault()
-        createConta(conta)
+        if (verificarExistenciaConta()) {
+            alert('O email inserido já está cadastrado, tente outro email ou faça o login')
+        } else {
+            createConta(conta)
+        }
     }
 
     const handleChange = e => {
