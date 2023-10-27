@@ -27,6 +27,9 @@ function Projects() {
     }
 
     useEffect(() => {
+        if (!id) {
+            setType('error')
+        }
         setTimeout(() => {
             fetch(`${url}/projects`, {
                 method: 'GET',

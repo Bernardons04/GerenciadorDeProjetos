@@ -13,26 +13,30 @@ function NewProject() {
         // initialize cost and services
         //project.cost = 0
         //project.services = []
-        project.ownerProject = id
-        
-        fetch(`${url}/projects`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Request-Headers': '*',
-                'Api-key': 'tOfsFWquDtICjEeh5uvESTmYHt1phsRIoXiPiHjWfxh86RfKE9n20wabsZndDod2',
-            },
-            body: JSON.stringify(project)
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                console.log(data)
-                console.log("Este é o ID:" + id)
-                console.log("Este é o ownerProject:" + project.ownerProject)
-                navigate('/projects', { state: { message: 'Projeto criado com sucesso!' } })
-                // redirect
+        if (!id) {
+            navigate('/projects', { state: { message: 'Para criar um projeto você precisa estar logado em uma conta!' } })
+        } else {
+            project.ownerProject = id
+
+            fetch(`${url}/projects`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Request-Headers': '*',
+                    'Api-key': 'tOfsFWquDtICjEeh5uvESTmYHt1phsRIoXiPiHjWfxh86RfKE9n20wabsZndDod2',
+                },
+                body: JSON.stringify(project)
             })
-            .catch(err => console.log(err))
+                .then(resp => resp.json())
+                .then(data => {
+                    console.log(data)
+                    console.log("Este é o ID:" + id)
+                    console.log("Este é o ownerProject:" + project.ownerProject)
+                    navigate('/projects', { state: { message: 'Projeto criado com sucesso!' } })
+                    // redirect
+                })
+                .catch(err => console.log(err))
+        }
     }
 
     return (
