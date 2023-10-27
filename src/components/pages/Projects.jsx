@@ -1,12 +1,12 @@
 import { useLocation } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 
 import Message from "../layout/Message"
 import Container from '../layout/Container'
 import LinkButton from '../layout/LinkButton'
 import Loading from "../layout/Loading"
 import ProjectCard from "../project/ProjectCard"
-
+import AppContext from '../../context/AppContext'
 import styles from './Projects.module.css'
 
 function Projects() {
@@ -15,8 +15,10 @@ function Projects() {
     const [removeLoading, setRemoveLoading] = useState(false)
     const [projectMessage, setProjectMessage] = useState('')
     const [type, setType] = useState()
+    const { id } = useContext(AppContext);
     const url = "https://gerenciadorapi.onrender.com"
 
+    let projectsView = projects.filter(item => item.ownerProject == id)
     const location = useLocation()
     let message = ''
 
@@ -74,7 +76,7 @@ function Projects() {
             <Container customClass="center">
                 <div className={styles.divCard}>
                     {projects.length > 0 &&
-                        projects.map((project) => (
+                        projectsView.map((project) => (
                             <ProjectCard
                                 id={project._id}
                                 name={project.name}

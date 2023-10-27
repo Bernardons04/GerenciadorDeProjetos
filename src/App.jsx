@@ -8,55 +8,57 @@ import NewConta from './components/Usuarios/NewConta'
 import NewProject from './components/pages/NewProject'
 import Projects from './components/pages/Projects'
 import Project from './components/pages/Project'
-
+import Provider from './context/Provider'
 import Container from './components/layout/Container'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Container customClass="min-height">
-        <Routes>
-          <Route
-            exact path="/"
-            element={<Conta />}
-          />
+    <Provider>
+      <Router>
+        <Navbar />
+        <Container customClass="min-height">
+          <Routes>
+            <Route
+              exact path="/"
+              element={<Conta />}
+            />
 
-          <Route
-            path="/home"
-            element={<Home />}
-          />
+            <Route
+              path="/home"
+              element={<Home />}
+            />
 
-          <Route
-            path="/projects"
-            element={<Projects />}
-          />
+            <Route
+              path="/projects"
+              element={<Projects />}
+            />
 
-          <Route
-            path="/contact"
-            element={<Contact />}
-          />
+            <Route
+              path="/contact"
+              element={<Contact />}
+            />
 
-          <Route
-            path="/newproject"
-            element={<NewProject />}
-          />
+            <Route
+              path="/newproject"
+              element={<NewProject />}
+            />
 
-          <Route
-            path="/newconta"
-            element={<NewConta />}
-          />
+            <Route
+              path="/newconta"
+              element={<NewConta />}
+            />
 
-          <Route
-            path="/project/:id"
-            element={<Project />}
-          />
-        </Routes>
-      </Container>
-      <Footer />
-    </Router>
+            <Route
+              path="/project/:id"
+              element={<Project />}
+            />
+          </Routes>
+        </Container>
+        <Footer />
+      </Router>
+    </Provider>
   )
 }
 

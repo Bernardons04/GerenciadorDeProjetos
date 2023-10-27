@@ -1,17 +1,20 @@
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
 import styles from './NewProject.module.css'
 import ProjectForm from '../project/ProjectForm'
-
+import AppContext from '../../context/AppContext'
 function NewProject() {
 
     const navigate = useNavigate()
+    const { id } = useContext(AppContext);
     const url = "https://gerenciadorapi.onrender.com"
 
     const createPost = project => {
         // initialize cost and services
         //project.cost = 0
         //project.services = []
-
+        project.ownerProject = id
+        
         fetch(`${url}/projects`, {
             method: 'POST',
             headers: {
@@ -24,6 +27,8 @@ function NewProject() {
             .then(resp => resp.json())
             .then(data => {
                 console.log(data)
+                console.log("Este é o ID:" + id)
+                console.log("Este é o ownerProject:" + project.ownerProject)
                 navigate('/projects', { state: { message: 'Projeto criado com sucesso!' } })
                 // redirect
             })
