@@ -85,7 +85,7 @@ function Conta() {
                 <SubmitButton text="Entrar" />
             </form>
 
-            <Link to="/NewConta">Ainda não possui uma conta?</Link>
+            <Link to="/newconta">Ainda não possui uma conta?</Link>
         </div>
     )
 }

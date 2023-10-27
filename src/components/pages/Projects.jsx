@@ -40,6 +40,7 @@ function Projects() {
                 .then(resp => resp.json())
                 .then(data => {
                     console.log(data)
+                    console.log(id)
                     setProjects(data)
                     setRemoveLoading(true)
                 })
@@ -75,7 +76,7 @@ function Projects() {
             {projectMessage && <Message type={type} msg={projectMessage} />}
             <Container customClass="center">
                 <div className={styles.divCard}>
-                    {projects.length > 0 &&
+                    {id &&
                         projectsView.map((project) => (
                             <ProjectCard
                                 id={project._id}
