@@ -10,9 +10,6 @@ function NewProject() {
     const url = "https://gerenciadorapi.onrender.com"
 
     const createPost = project => {
-        // initialize cost and services
-        //project.cost = 0
-        //project.services = []
         if (!id) {
             navigate('/projects', { state: { message: 'Para criar um projeto você precisa estar logado em uma conta!' } })
         } else {

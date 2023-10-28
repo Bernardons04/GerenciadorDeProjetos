@@ -4,7 +4,6 @@ import Input from "../form/Input"
 import SubmitButton from '../form/SubmitButton'
 import styles from './Conta.module.css'
 import AppContext from '../../context/AppContext'
-import Message from '../layout/Message'
 
 function NewConta({ contaData }) {
     

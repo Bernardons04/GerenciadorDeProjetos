@@ -23,9 +23,8 @@ function App() {
 }
 
 function NavigationControl() {
+  
   const location = useLocation();
-
-  // Verifica se a rota atual é '/newconta' ou '/'
   const isNavbarHidden = location.pathname === '/newconta' || location.pathname === '/';
 
   return (

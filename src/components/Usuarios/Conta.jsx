@@ -4,12 +4,11 @@ import SubmitButton from '../form/SubmitButton'
 import styles from './Conta.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import AppContext from '../../context/AppContext'
-
+import bcrypt from 'bcryptjs'
 function Conta() {
 
     const { conta, setConta, setId } = useContext(AppContext); // Atual login
     const [contas, setContas] = useState([])
-
     const navigate = useNavigate()
     const url = "https://gerenciadorapi.onrender.com"
     
@@ -29,14 +28,18 @@ function Conta() {
             .catch(err => console.log(err))
     }, [])
 
+    const passwordIsValid = (passwordContas, passwordDigitado) => {
+        return bcrypt.compare(passwordContas, passwordDigitado)
+    }
+
     function verificarExistenciaConta() {
         let existe;
         for (const element of contas) {
-            if (element.email === conta.email && element.password === conta.password) {
+            if (element.email === conta.email && passwordIsValid(element.email, conta.email)) {
                 existe = 1;
                 setId(element._id)
                 break;
-            } else if (element.email === conta.email && element.password !== conta.password) {
+            } else if (element.email === conta.email && !passwordIsValid(element.email, conta.email)) {
                 existe = 5
                 break;
             } else {
