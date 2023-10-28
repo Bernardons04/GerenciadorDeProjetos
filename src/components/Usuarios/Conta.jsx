@@ -33,21 +33,26 @@ function Conta() {
         let existe;
         for (const element of contas) {
             if (element.email === conta.email && element.password === conta.password) {
-                existe = true;
+                existe = 1;
                 setId(element._id)
                 break;
+            } else if (element.email === conta.email && element.password !== conta.password) {
+                existe = 5
+                break;
             } else {
-                existe = false
+                existe = 2
             }
         }
         return existe
     }
 
     const handleLogin = () => {
-        if (verificarExistenciaConta()) {
+        if (verificarExistenciaConta() === 1) {
             navigate(`/home`)
-        } else {
+        } else if (verificarExistenciaConta() === 2) {
             alert("Conta inexistente! Crie uma conta para utilizar a aplicação!")
+        } else {
+            alert("Usuário ou senha incorretos")
         }
     }
 

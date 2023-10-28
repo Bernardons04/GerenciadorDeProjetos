@@ -8,7 +8,7 @@ function Navbar({ handleUl }) {
     return (
         <nav className='navbar'>
             <Container>
-                <Link to="/home">
+                <Link>
                     <img src={logo} alt="Costs" />
                 </Link>
                 {handleUl && (
@@ -23,14 +23,14 @@ function Navbar({ handleUl }) {
                             <Link to="/contact">Contato</Link>
                         </li>
                         <li className="button">
-                            <Link to="/">Login</Link>
+                            <Link to="/">LogOut</Link>
                         </li>
                     </ul>
                 )}
                 {!handleUl && (
                     <ul className='list'>
                         <li className="button">
-                            <Link to="/">Login</Link>
+                            <Link to="/">LogIn</Link>
                         </li>
                     </ul>
                 )}
