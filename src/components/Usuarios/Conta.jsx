@@ -5,13 +5,16 @@ import styles from './Conta.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import AppContext from '../../context/AppContext'
 import bcrypt from 'bcryptjs'
+import Loading from '../layout/Loading'
+
 function Conta() {
 
     const { conta, setConta, setId } = useContext(AppContext); // Atual login
     const [contas, setContas] = useState([])
+    const [removeLoading, setRemoveLoading] = useState(false)
     const navigate = useNavigate()
     const url = "https://gerenciadorapi.onrender.com"
-    
+
     useEffect(() => {
         fetch(`${url}/user`, {
             method: "GET",
@@ -24,6 +27,7 @@ function Conta() {
             .then(resp => resp.json())
             .then(data => {
                 setContas(data)
+                setRemoveLoading(true)
             })
             .catch(err => console.log(err))
     }, [])
@@ -70,30 +74,34 @@ function Conta() {
 
     return (
         <div className={styles.divContainer}>
+
             <h1>Faça o Login para utilizar o Tech Costs</h1>
+            {!removeLoading ? <Loading /> :
+                <>
+                    <form onSubmit={submit} className={styles.divLogin}>
+                        <Input
+                            type="email"
+                            text="Email"
+                            name="email"
+                            placeholder="Insira o seu Email de usuário"
+                            handleOnChange={handleChange}
+                            value={conta.email ? conta.email : ''}
+                        />
+                        <Input
+                            type="password"
+                            text="Senha"
+                            name="password"
+                            placeholder="Insira a sua senha"
+                            handleOnChange={handleChange}
+                            value={conta.password ? conta.password : ''}
+                        />
 
-            <form onSubmit={submit} className={styles.divLogin}>
-                <Input
-                    type="email"
-                    text="Email"
-                    name="email"
-                    placeholder="Insira o seu Email de usuário"
-                    handleOnChange={handleChange}
-                    value={conta.email ? conta.email : ''}
-                />
-                <Input
-                    type="password"
-                    text="Senha"
-                    name="password"
-                    placeholder="Insira a sua senha"
-                    handleOnChange={handleChange}
-                    value={conta.password ? conta.password : ''}
-                />
+                        <SubmitButton text="Entrar" />
+                    </form>
 
-                <SubmitButton text="Entrar" />
-            </form>
-
-            <Link to="/newconta">Ainda não possui uma conta?</Link>
+                    <Link to="/newconta">Ainda não possui uma conta?</Link>
+                </>
+            }
         </div>
     )
 }
