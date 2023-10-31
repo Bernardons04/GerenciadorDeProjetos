@@ -14,7 +14,7 @@ Readme.Github
 
 - `Funcionalidade 1`: Criar, Visualizar, Editar e Deletar Projetos (CRUD)
 - `Funcionalidade 2`: Criar, Visualizar e Deletar Serviços
-- `Funcionalidade 4`: Navegar por diferentes abas
+- `Funcionalidade 3`: Sistema de Cadastro de Contas e Login
 
 ## ✔️Tecnologias utilizadas
 
