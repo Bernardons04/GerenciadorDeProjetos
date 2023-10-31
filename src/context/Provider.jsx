@@ -6,11 +6,14 @@ function Provider({ children }) {
 
     const [conta, setConta] = useState({});
     const [id, setId] = useState();
+    const [serviceToEdit, setServiceToEdit] = useState({})
     const value = {
         conta,
         setConta,
         id,
         setId,
+        serviceToEdit,
+        setServiceToEdit,
     };
 
     return (

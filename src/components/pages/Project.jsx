@@ -18,6 +18,7 @@ function Project() {
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
     const [message, setMessage] = useState('')
+    const [messageButton, setMessageButton] = useState('')
     const [type, setType] = useState()
     const [services, setServices] = useState([])
     const [removeLoading, setRemoveLoading] = useState(false)
@@ -85,6 +86,7 @@ function Project() {
 
     const toggleServiceForm = () => {
         setShowServiceForm(!showServiceForm)
+        setMessageButton('Adicionar serviço')
     }
 
     const editPost = (project) => {
@@ -142,6 +144,22 @@ function Project() {
             .catch(err => console.log(err))
     }
 
+    const openServiceForm = () => {
+        setMessageButton('Concluir Edição')
+        if (showServiceForm) {
+        } else {
+            setShowServiceForm(!showServiceForm)
+        }
+    }
+    /*
+        1 - abrir formulario com as informações a respeito do serviço;
+            1. Extrair o id do serviceCard que eu cliquei
+            2. Linkar essas informações (que extraí no item 1) ao serviceForm
+    
+        2 - Ao alterar as informações, adicionar um novo serviço com as informações alteradas;
+        3 - Após cadastrar esse novo serviço, excluir o antigo imediatamente
+    */
+
     return <>
         {project.name ? (
             <div className={styles.projectDetails}>
@@ -191,8 +209,9 @@ function Project() {
                             {showServiceForm && (
                                 <ServiceForm
                                     handleSubmit={createService}
-                                    textBtn="Adicionar Serviço"
+                                    textBtn={messageButton}
                                     projectData={project}
+                                    handleRemove={removeService}
                                 />
                             )}
                         </div>
@@ -207,7 +226,9 @@ function Project() {
                                     cost={service.cost}
                                     description={service.description}
                                     key={service._id}
+                                    serviceData={services}
                                     handleRemove={removeService}
+                                    openEditService={openServiceForm}
                                 />
                             ))
                         }
