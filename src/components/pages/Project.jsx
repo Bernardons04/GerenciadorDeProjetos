@@ -3,11 +3,11 @@ import { parse, v4 as uuidv4 } from 'uuid'
 import styles from './Project.module.css'
 
 import { useParams } from 'react-router-dom'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import ProjectForm from '../project/ProjectForm'
 import ServiceForm from '../service/ServiceForm'
 import ServiceCard from '../service/ServiceCard'
-
+import AppContext from '../../context/AppContext'
 import Loading from "../layout/Loading"
 import Container from "../layout/Container"
 import Message from "../layout/Message"
@@ -151,14 +151,6 @@ function Project() {
             setShowServiceForm(!showServiceForm)
         }
     }
-    /*
-        1 - abrir formulario com as informações a respeito do serviço;
-            1. Extrair o id do serviceCard que eu cliquei
-            2. Linkar essas informações (que extraí no item 1) ao serviceForm
-    
-        2 - Ao alterar as informações, adicionar um novo serviço com as informações alteradas;
-        3 - Após cadastrar esse novo serviço, excluir o antigo imediatamente
-    */
 
     return <>
         {project.name ? (
@@ -211,7 +203,6 @@ function Project() {
                                     handleSubmit={createService}
                                     textBtn={messageButton}
                                     projectData={project}
-                                    handleRemove={removeService}
                                 />
                             )}
                         </div>

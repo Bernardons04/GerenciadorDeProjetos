@@ -7,6 +7,7 @@ function Provider({ children }) {
     const [conta, setConta] = useState({});
     const [id, setId] = useState();
     const [serviceToEdit, setServiceToEdit] = useState({})
+    const [indice, setIndice] = useState()
     const value = {
         conta,
         setConta,
@@ -14,6 +15,8 @@ function Provider({ children }) {
         setId,
         serviceToEdit,
         setServiceToEdit,
+        indice, 
+        setIndice,
     };
 
     return (

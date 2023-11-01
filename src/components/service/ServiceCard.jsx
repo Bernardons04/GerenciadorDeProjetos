@@ -5,7 +5,7 @@ import AppContext from '../../context/AppContext'
 
 function ServiceCard({ id, name, cost, description, handleRemove, openEditService, serviceData }) {
 
-    const { serviceToEdit, setServiceToEdit } = useContext(AppContext);
+    const { setServiceToEdit, setIndice } = useContext(AppContext);
 
     const remove = e => {
         e.preventDefault()
@@ -15,14 +15,20 @@ function ServiceCard({ id, name, cost, description, handleRemove, openEditServic
     const openForm = e => {
         openEditService()
         setServiceToEdit(getService)
-        console.log(serviceToEdit)
+        setIndice(findIndice)
     }
     const getService = () => {
         const serviceToBeEdit = serviceData.find(
             service => service._id === id
         )
-        //console.log(serviceToBeEdit)
         return serviceToBeEdit
+    }
+
+    const findIndice = () => {
+        const index = serviceData.findIndex(
+            service => service._id === id
+        )
+        return index
     }
 
     return (
