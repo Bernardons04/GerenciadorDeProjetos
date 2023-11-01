@@ -20,6 +20,7 @@ function Project() {
     const [message, setMessage] = useState('')
     const [messageButton, setMessageButton] = useState('')
     const [type, setType] = useState()
+    const { setServiceToEdit } = useContext(AppContext);
     const [services, setServices] = useState([])
     const [removeLoading, setRemoveLoading] = useState(false)
     const url = "https://gerenciadorapi.onrender.com"
@@ -45,11 +46,11 @@ function Project() {
     }, [id])
 
     const createService = (project) => {
-        //last service
         const lastService = project.services[project.services.length - 1]
         lastService.id = uuidv4()
         const lastServiceCost = lastService.cost
         const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost)
+
         if (newCost > parseFloat(project.budget)) {
             setMessage('Orçamento ultrapassado, verifique o valor do serviço')
             setType('error')
@@ -57,10 +58,8 @@ function Project() {
             return false
         }
 
-        // add serivce cost to project total cost
         project.cost = newCost
 
-        // update project
         fetch(`${url}/projects/${id}`, {
             method: 'PATCH',
             headers: {
@@ -87,34 +86,37 @@ function Project() {
     const toggleServiceForm = () => {
         setShowServiceForm(!showServiceForm)
         setMessageButton('Adicionar serviço')
+        setServiceToEdit({})
     }
 
-    const editPost = (project) => {
+    const editPost = (project, message) => {
         setMessage('')
-        //budget validation
         if (project.budget < project.cost) {
             setMessage('O orçamento não pode ser maior do que o custo do projeto!')
             setType('error')
             return false
+        } else {
+            fetch(`${url}/projects/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Request-Headers': '*',
+                    'Api-key': 'tOfsFWquDtICjEeh5uvESTmYHt1phsRIoXiPiHjWfxh86RfKE9n20wabsZndDod2',
+                },
+                body: JSON.stringify(project),
+            })
+                .then(resp => resp.json())
+                .then(data => {
+                    setProject(data)
+                    setServices(data.services)
+                    setShowProjectForm(false)
+                    setShowServiceForm(false)
+                    setMessage(message)
+                    setType('success')
+                })
+                .catch(err => console.log(err))
         }
 
-        fetch(`${url}/projects/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Request-Headers': '*',
-                'Api-key': 'tOfsFWquDtICjEeh5uvESTmYHt1phsRIoXiPiHjWfxh86RfKE9n20wabsZndDod2',
-            },
-            body: JSON.stringify(project),
-        })
-            .then(resp => resp.json())
-            .then(data => {
-                setProject(data)
-                setShowProjectForm(false)
-                setMessage('Projeto atualizado com sucesso!')
-                setType('success')
-            })
-            .catch(err => console.log(err))
     }
 
     function removeService(id, cost) {
@@ -200,7 +202,7 @@ function Project() {
                         <div className={styles.projectInfo}>
                             {showServiceForm && (
                                 <ServiceForm
-                                    handleSubmit={createService}
+                                    handleSubmit={messageButton === 'Concluir Edição' ? editPost : createService}
                                     textBtn={messageButton}
                                     projectData={project}
                                 />

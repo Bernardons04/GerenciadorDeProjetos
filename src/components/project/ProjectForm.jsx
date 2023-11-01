@@ -29,7 +29,7 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
 
     const submit = e => {
         e.preventDefault()
-        handleSubmit(project)
+        handleSubmit(project, "Projeto atualizado com sucesso!")
     }
 
     const handleChange = e => {
