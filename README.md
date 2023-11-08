@@ -28,7 +28,7 @@ Readme.Github
 ## <p align="center">📱Interface</p>
 
 <p align="center">
-<img src="/src/img/interfaceCosts.png" width="450px" align="center">
+<img src="/src/img/InterfaceTechCosts.png" width="450px" align="center">
 </p>
 
 ## Interessado em testar o web app? Clique no link abaixo:
