@@ -19,9 +19,9 @@ function Navbar({ handleUl }) {
                         <li>
                             <Link to="/projects">Projetos</Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="/contact">Contato</Link>
-                        </li>
+                        </li>*/} 
                         <li className="button">
                             <Link to="/">LogOut</Link>
                         </li>
