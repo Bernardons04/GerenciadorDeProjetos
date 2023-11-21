@@ -13,7 +13,7 @@ Readme.Github
 ## 🔨Funcionalidades da aplicação web - RFs
 
 - `Funcionalidade 1`: Criar, Visualizar, Editar e Deletar Projetos (CRUD)
-- `Funcionalidade 2`: Criar, Visualizar e Deletar Serviços
+- `Funcionalidade 2`: Criar, Visualizar, Editar e Deletar Serviços (CRUD)
 - `Funcionalidade 3`: Sistema de Cadastro de Contas e Login
 
 ## ✔️Tecnologias utilizadas
