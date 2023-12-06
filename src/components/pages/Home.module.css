@@ -26,3 +26,18 @@ p {
 img {
     max-width: 450px;
 }
+
+@media screen and (max-width: 570px) {
+    img {
+        max-width: 400px;
+    }
+    .home_section {
+        padding: 1.2rem;
+        gap: 0rem;
+    }
+}
+@media screen and (max-width: 375px) {
+    img {
+        max-width: 300px;
+    }
+}

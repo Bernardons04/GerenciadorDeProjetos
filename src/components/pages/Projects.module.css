@@ -30,4 +30,11 @@
     .divCard {
         column-count: 1;
     }
+    .titleContainer {
+        flex-direction: column;
+    }
+    .titleContainer h1 {
+        text-align: center;
+        font-size: 2rem;
+    }
 }

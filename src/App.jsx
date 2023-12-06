@@ -11,6 +11,7 @@ import Provider from './context/Provider'
 import Container from './components/layout/Container'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
+import './App.css'
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function NavigationControl() {
   const isNavbarHidden = location.pathname === '/newconta' || location.pathname === '/';
 
   return (
-    <>
+    <div className='divContainerApp'>
       {!isNavbarHidden && <Navbar handleUl={true}/>}
       {isNavbarHidden && <Navbar handleUl={false}/>}
       <Container customClass="min-height">
@@ -43,7 +44,7 @@ function NavigationControl() {
         </Routes>
       </Container>
       <Footer />
-    </>
+    </div>
   );
 }
 

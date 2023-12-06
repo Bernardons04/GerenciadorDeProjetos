@@ -29,3 +29,10 @@
     font-weight: bold;
     color: #ffbb33;
 }
+
+@media screen and (max-width: 570px) {
+    /*.footer {
+        position: relative;
+        bottom: 0;
+    }*/
+}

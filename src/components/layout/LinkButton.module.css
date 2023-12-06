@@ -7,6 +7,7 @@
     transition: .3s;
     cursor: pointer;
     max-height: 40px;
+    text-align: center;
 }
 
 .btn:hover {

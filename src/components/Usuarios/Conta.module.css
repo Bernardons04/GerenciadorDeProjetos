@@ -19,3 +19,20 @@
 .divContainer a:hover {
     text-decoration: underline;
 }
+
+@media screen and (max-width: 570px) {
+    .divContainer h1 {
+        font-size: 2rem;
+        padding: 0 .5rem;
+    }
+    .divLogin {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .divContainer h1 {
+        font-size: 1.7rem;
+        padding: 0 .2rem;
+    }
+}
